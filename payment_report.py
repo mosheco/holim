@@ -106,9 +106,9 @@ def main():
     print ("debtor_row_ranges", debtor_row_ranges)
     for i, debtor_row_range in enumerate(debtor_row_ranges):
         if i % 2 == 0:
-            bgcolor = (208/255.0, 224/255.0, 227/255.0)
+            bgcolor = (208/255.0, 224/255.0, 237/255.0)
         else:
-            bgcolor = (255/255.0, 242/255.0, 204/255.0)
+            bgcolor = (245/255.0, 242/255.0, 224/255.0)
         body = {
             "requests": [
                 {
@@ -236,12 +236,9 @@ def format_report(payment_matching):
             row = [first_pass and creditor[0] or '', first_pass and creditor[1][0] or '', first_pass and creditor[1][1] or '',
                    matched_debtor[0], matched_debtor[1][0], matched_debtor[1][1]]
             row_index += 1
-            print ("row_index, last_debtor, matched_debtor", row_index,"-", last_debtor,"-", matched_debtor)
-            print("matched_debtor[1] != last_debtor", matched_debtor[1] , last_debtor)
             if matched_debtor[1] != last_debtor:
                 debtor_row_range = (last_debtor_row, row_index)
                 debtor_row_ranges.append(debtor_row_range)
-                print ("ADDED RANGE", debtor_row_range)
                 last_debtor = matched_debtor[1]
                 last_debtor_row = row_index
                 
