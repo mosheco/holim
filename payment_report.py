@@ -103,7 +103,6 @@ def main():
  
 
     # Set alternating background colors for debtor ranges
-    print ("debtor_row_ranges", debtor_row_ranges)
     for i, debtor_row_range in enumerate(debtor_row_ranges):
         if i % 2 == 0:
             bgcolor = (208/255.0, 224/255.0, 237/255.0)
@@ -136,6 +135,28 @@ def main():
         }
         res = service.spreadsheets().batchUpdate(spreadsheetId=spreadsheet_id, body=body).execute()
    
+    # Set general font size
+    body = {
+        "requests": [
+            {
+                "repeatCell": {
+                    "range": {
+                        "sheetId": new_sheet_id,
+                        "startRowIndex": 1
+                    },
+                    "cell": {
+                        "userEnteredFormat": {
+                            "textFormat": {
+                                "fontSize": 11
+                            }
+                        }
+                    },
+                    "fields": "userEnteredFormat(textFormat)"
+                }
+            }
+        ]
+    }
+    res = service.spreadsheets().batchUpdate(spreadsheetId=spreadsheet_id, body=body).execute()
 
     return
 
