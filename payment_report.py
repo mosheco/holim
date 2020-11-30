@@ -77,7 +77,6 @@ def main():
                                            body={'values': values})
     response = request.execute()
 
-
     # Set border separators after each creditor
     for row in creditor_rows:
         body = {
@@ -100,7 +99,6 @@ def main():
             ]
         }
         res = service.spreadsheets().batchUpdate(spreadsheetId=spreadsheet_id, body=body).execute()
- 
 
     # Set alternating background colors for debtor ranges
     for i, debtor_row_range in enumerate(debtor_row_ranges):
@@ -134,7 +132,7 @@ def main():
             ]
         }
         res = service.spreadsheets().batchUpdate(spreadsheetId=spreadsheet_id, body=body).execute()
-   
+
     # Set general font size
     body = {
         "requests": [
@@ -152,6 +150,81 @@ def main():
                         }
                     },
                     "fields": "userEnteredFormat(textFormat)"
+                }
+            },
+            {
+                "repeatCell": {
+                    "range": {
+                        "sheetId": new_sheet_id,
+                        "startRowIndex": 0,
+                        "endRowIndex": 1
+                    },
+                    "cell": {
+                        "userEnteredFormat": {
+                            "textFormat": {
+                                "fontSize": 16
+                            }
+                        }
+                    },
+                    "fields": "userEnteredFormat(textFormat)"
+                }
+            },
+            {
+                "mergeCells": {
+                    "range": {
+                        "sheetId": new_sheet_id,
+                        "startRowIndex": 0,
+                        "endRowIndex": 1,
+                        "startColumnIndex": 0,
+                        "endColumnIndex": 3
+                    },
+                    "mergeType": "MERGE_ALL"
+                }
+            },
+            {
+                "mergeCells": {
+                    "range": {
+                        "sheetId": new_sheet_id,
+                        "startRowIndex": 0,
+                        "endRowIndex": 1,
+                        "startColumnIndex": 3,
+                        "endColumnIndex": 6
+                    },
+                    "mergeType": "MERGE_ALL"
+                }
+            },
+            {
+                "repeatCell": {
+                    "range": {
+                        "sheetId": new_sheet_id,
+                        "startRowIndex": 0,
+                        "endRowIndex": 1,
+                        "startColumnIndex": 0,
+                        "endColumnIndex": 1
+                    },
+                    "cell": {
+                        "userEnteredFormat": {
+                            "horizontalAlignment": "CENTER"
+                        }
+                    },
+                    "fields": "userEnteredFormat(horizontalAlignment)"
+                }
+            },
+            {
+                "repeatCell": {
+                    "range": {
+                        "sheetId": new_sheet_id,
+                        "startRowIndex": 0,
+                        "endRowIndex": 1,
+                        "startColumnIndex": 3,
+                        "endColumnIndex": 4
+                    },
+                    "cell": {
+                        "userEnteredFormat": {
+                            "horizontalAlignment": "CENTER"
+                        }
+                    },
+                    "fields": "userEnteredFormat(horizontalAlignment)"
                 }
             }
         ]
@@ -241,7 +314,7 @@ def format_report(payment_matching):
     Also returns a list of rows where creditors appear and a list of row ranges for debtors.
     These are used for styling the sheet.
     """
-    values = [['', 'זכאים', '', '', 'חייבים', '']]
+    values = [['זכאים', '', '', 'חייבים', '', '']]
     values.append([])
     row_index = 1
 
@@ -262,7 +335,7 @@ def format_report(payment_matching):
                 debtor_row_ranges.append(debtor_row_range)
                 last_debtor = matched_debtor[1]
                 last_debtor_row = row_index
-                
+
             first_pass = False
             values.append(row)
         creditor_rows.append(row_index)
@@ -270,7 +343,7 @@ def format_report(payment_matching):
         row_index += 1
     debtor_row_range = (last_debtor_row, row_index)
     debtor_row_ranges.append(debtor_row_range)
-       
+
     # pprint.pprint(values)
     return values, creditor_rows, debtor_row_ranges
 
