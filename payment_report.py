@@ -226,6 +226,26 @@ def main():
                     },
                     "fields": "userEnteredFormat(horizontalAlignment)"
                 }
+            },
+            {
+                "autoResizeDimensions": {
+                    "dimensions": {
+                        "sheetId": new_sheet_id,
+                        "dimension": "COLUMNS",
+                        "startIndex": 2,
+                        "endIndex": 3
+                    }
+                }
+            },
+            {
+                "autoResizeDimensions": {
+                    "dimensions": {
+                        "sheetId": new_sheet_id,
+                        "dimension": "COLUMNS",
+                        "startIndex": 5,
+                        "endIndex": 6
+                    }
+                }
             }
         ]
     }
