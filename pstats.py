@@ -50,6 +50,8 @@ def main():
     sheet_metadata = service.spreadsheets().get(spreadsheetId=spreadsheet_id).execute()
     sheets = sheet_metadata.get('sheets', '')
     sums = {}
+    maxs = {}
+    mins = {}
     played_count = {}
     in_money_count= {}
     for sheet in sheets:
@@ -76,6 +78,8 @@ def main():
 
                     if balance and row[2] and row[2].isascii():
                         sums[row[2]] = sums.get(row[2],0) + balance
+                        maxs[row[2]] = max(maxs.setdefault(row[2], 0), balance)
+                        mins[row[2]] = min(mins.setdefault(row[2], 0), balance)
                     if row[2] and row[0]:
                         if row[2] not in played_count:
                             played_count[row[2]] = 0
@@ -97,10 +101,25 @@ def main():
         except ZeroDivisionError:
             pass
                             
-                    
+
+    print ("SUMS:\n")
     sums_l = list(sums.items())
     sums_l.sort(key=lambda x: x[1])
     pprint.pprint(sums_l)
+    print ("--------------------------\n")
+
+    print ("MINS:\n")
+    mins_l = list(mins.items())
+    mins_l.sort(key=lambda x: x[1])
+    pprint.pprint(mins_l)
+    print ("--------------------------\n")
+
+    print ("MAXS:\n")
+    maxs_l = list(maxs.items())
+    maxs_l.sort(key=lambda x: x[1])
+    pprint.pprint(maxs_l)
+    print ("--------------------------\n")
+
 
 
 if __name__ == '__main__':
