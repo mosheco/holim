@@ -1,6 +1,6 @@
 """
 Create a new sheet and fill it with payment matching table.
-Assumption: The list of balances is in a sheet titles "נוכחי".
+Assumption: The list of balances is in a sheet titled "נוכחי".
 """
 
 # -*- coding: utf-8 -*-
