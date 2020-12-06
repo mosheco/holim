@@ -11,7 +11,7 @@ Setting up an environment:
 
 python payment_report.py
 
-## Running stats
+## Running stats:
 
 python pstats.py -h  (for help)
 
