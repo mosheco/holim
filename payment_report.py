@@ -11,6 +11,7 @@ import os.path
 import pprint
 import sys
 from googleapiclient.discovery import build
+from googleapiclient.errors import HttpError
 from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
 
@@ -63,7 +64,13 @@ def main():
             }]
         }
 
-    new_sheet_response = spreadsheets.batchUpdate(spreadsheetId=spreadsheet_id, body=request_body).execute()
+    try:
+        new_sheet_response = spreadsheets.batchUpdate(spreadsheetId=spreadsheet_id, body=request_body).execute()
+    except HttpError as e:
+        if b"already exists" in e.content:
+            print(f"Sheet named '{title[::-1]}' already exists. Delete the existing one before running.")
+            sys.exit()
+        raise
     new_sheet_title = new_sheet_response['replies'][0]['addSheet']['properties']['title']
     new_sheet_id = new_sheet_response['replies'][0]['addSheet']['properties']['sheetId']
 
