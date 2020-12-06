@@ -6,12 +6,12 @@ Setting up an environment:
 3. pip install google-api-python-client
 4. pip install google_auth_oauthlib
 
-## Running payment report.
+## Running payment report:
 (It assumes the balances sheet is named 'נוכחי')
 
 python payment_report.py
 
-## Stats
+## Running stats
 
 python pstats.py -h  (for help)
 
