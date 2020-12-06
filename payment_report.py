@@ -9,6 +9,7 @@ import argparse
 import pickle
 import os.path
 import pprint
+import sys
 from googleapiclient.discovery import build
 from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
@@ -261,11 +262,15 @@ def get_balances(spreadsheets):
     """
     sheet_metadata = spreadsheets.get(spreadsheetId=spreadsheet_id).execute()
     sheets = sheet_metadata.get('sheets', '')
+    current_sheet_title = None
     for sheet in sheets:
         title = sheet.get("properties", {}).get("title", "Sheet1")
         if "נוכחי" in title:
             current_sheet_title = title
             break
+    if not current_sheet_title:
+        print("Sheet with title 'יחכונ' was not found.")
+        sys.exit()
 
     balances = []
     request = spreadsheets.values().get(spreadsheetId=spreadsheet_id, range=current_sheet_title + '!A3:C100')
