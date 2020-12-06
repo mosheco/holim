@@ -68,7 +68,7 @@ def main():
         new_sheet_response = spreadsheets.batchUpdate(spreadsheetId=spreadsheet_id, body=request_body).execute()
     except HttpError as e:
         if b"already exists" in e.content:
-            print(f"Sheet named '{title[::-1]}' already exists. Delete the existing one before running.")
+            print(f"Sheet named '{title[::-1]}' already exists. Delete the existing one before running.", file=sys.stderr)
             sys.exit()
         raise
     new_sheet_title = new_sheet_response['replies'][0]['addSheet']['properties']['title']
@@ -276,7 +276,7 @@ def get_balances(spreadsheets):
             current_sheet_title = title
             break
     if not current_sheet_title:
-        print("Sheet with title 'יחכונ' was not found.")
+        print("Sheet with title 'יחכונ' was not found.", file=sys.stderr)
         sys.exit()
 
     balances = []
