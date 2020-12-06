@@ -7,6 +7,11 @@ Setting up an environment:
 4. pip install google_auth_oauthlib
 
 ## Running report.
-It assumes the balances sheet is named 'נוכחי'
+(It assumes the balances sheet is named 'נוכחי')
 
 python payment_report.py
+
+## Stats
+
+python pstats.py -h  (for help)
+E.g. python pstats.py  -c -y 2020
