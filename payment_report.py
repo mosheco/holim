@@ -141,7 +141,7 @@ def main():
         }
         res = service.spreadsheets().batchUpdate(spreadsheetId=spreadsheet_id, body=body).execute()
 
-    # Set general font size
+    # Other formattings: general font sizes, merged cells, horizontal alignment, autosize some columns to fit
     body = {
         "requests": [
             {
