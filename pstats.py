@@ -120,6 +120,11 @@ def main():
     pprint.pprint(maxs_l)
     print ("--------------------------\n")
 
+    per_game =  [(sum, played_count[sum[0]], round(float(sum[1])/played_count[sum[0]], 2)) for sum in sums_l]
+    per_game.sort(key=lambda x: x[2])
+    pprint.pprint(per_game)
+                        
+
 
 
 if __name__ == '__main__':
