@@ -328,6 +328,8 @@ def determine_payments(balances):
                 debtor_payment_list.append(debtor)
                 owed -= abs(debtor[0])
                 if owed == 0:
+                    # Last debtor matches exactly to complete current creditor, remove from list
+                    debtors = debtors[i+1:]
                     break
             else:
                 # Add debtor partial payment to list and modify "still to pay" debtor list
