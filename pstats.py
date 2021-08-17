@@ -14,6 +14,24 @@ SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly']
 # The ID and range of a sample spreadsheet.
 spreadsheet_id = '14sq8XzYnEt12S34WKplZUbT9GFa3jOxWlo1fmjyGeIQ'
 
+oldname_mapping = {
+    'kavodladov': 'vodaldovak',
+    'JimFridlin': 'suitedJokers21',
+    'arazi100': 'badluck9999',
+    'franki2912': 'franki291285',
+    'omrigropper': 'OMGR888',
+    'sntran': 'pkrran',
+    'spidermantal052': 'spidermant57',
+    'stam314': 'stam315',
+    'thedub11': 'thedub111',
+    'THEVERYLUCKYMAN': 'theluckyman2.0',
+    'Yaniv2809': 'YanivS2809',
+    'YoavKatz': 'yoavi.k.',
+    'elloro99': 'elloro88',
+    'Mordillo2020': 'Mordillo2022',
+    'Z_707': 'tonnny707'
+}
+
 def main():
     """Shows basic usage of the Sheets API.
     Prints values from a sample spreadsheet.
@@ -75,22 +93,22 @@ def main():
                         balance = int(row[0])
                     except ValueError:
                         balance = None
-
-                    if balance and row[2] and row[2].isascii():
-                        sums[row[2]] = sums.get(row[2],0) + balance
-                        maxs[row[2]] = max(maxs.setdefault(row[2], 0), balance)
-                        mins[row[2]] = min(mins.setdefault(row[2], 0), balance)
-                    if row[2] and row[0]:
-                        if row[2] not in played_count:
-                            played_count[row[2]] = 0
-                        if row[2] not in in_money_count:
-                            in_money_count[row[2]] = 0
+                    username = oldname_mapping.get(row[2]) or row[2]
+                    if balance and username and username.isascii():
+                        sums[username] = sums.get(username,0) + balance
+                        maxs[username] = max(maxs.setdefault(username, 0), balance)
+                        mins[username] = min(mins.setdefault(username, 0), balance)
+                    if username and row[0]:
+                        if username not in played_count:
+                            played_count[username] = 0
+                        if username not in in_money_count:
+                            in_money_count[username] = 0
                         for i in range(0, len(row[3:]), 2):
                             if row[3+i]:
-                                played_count[row[2]] += 1
+                                played_count[username] += 1
                             try:
                                 if row[3+i+1]:
-                                    in_money_count[row[2]] += 1
+                                    in_money_count[username] += 1
                             except:
                                 # hit end
                                 pass
