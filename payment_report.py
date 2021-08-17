@@ -272,7 +272,7 @@ def get_balances(spreadsheets):
     current_sheet_title = None
     for sheet in sheets:
         title = sheet.get("properties", {}).get("title", "Sheet1")
-        if "נוכחי" in title:
+        if "נוכחי" == title.strip():
             current_sheet_title = title
             break
     if not current_sheet_title:
