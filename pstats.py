@@ -30,7 +30,8 @@ oldname_mapping = {
     'YoavKatz': 'yoavi.k.',
     'elloro99': 'elloro88',
     'Mordillo2020': 'Mordillo2022',
-    'Z_707': 'tonnny707'
+    'Z_707': 'tonnny707',
+    'shay830': 'shay4455'
 }
 
 def main():
