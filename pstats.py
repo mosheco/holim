@@ -15,7 +15,8 @@ SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly']
 spreadsheet_id = '14sq8XzYnEt12S34WKplZUbT9GFa3jOxWlo1fmjyGeIQ'
 
 oldname_mapping = {
-    'kavodladov': 'vodaldovak',
+    'kavodladov': 'dovlakavod',
+    'vodaldovak': 'dovlakavod',
     'JimFridlin': 'suitedJokers21',
     'arazi100': 'badluck9999',
     'franki2912': 'franki291285',
