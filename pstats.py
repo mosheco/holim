@@ -15,6 +15,7 @@ SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly']
 spreadsheet_id = '14sq8XzYnEt12S34WKplZUbT9GFa3jOxWlo1fmjyGeIQ'
 
 oldname_mapping = {
+    'resber777': 'dovlakavod',
     'kavodladov': 'dovlakavod',
     'vodaldovak': 'dovlakavod',
     'mishehu111': 'dovlakavod',
@@ -22,13 +23,16 @@ oldname_mapping = {
     'suitedJokers21': 'connectedJokers',
     'arazi100': 'badluck9999',
     'franki2912': 'franki291285',
+    'O.M.G.R2022': 'OMGR888',
     'omrigropper': 'OMGR888',
     'sntran': 'pkrran',
+    'talspiderman': 'spidermant57',
     'spidermantal052': 'spidermant57',
     'stam314': 'stam315',
     'thedub11': 'thedub111',
     'THEVERYLUCKYMAN': 'theluckyman3.0',
     'theluckyman2.0': 'theluckyman3.0',
+    'ys280981': 'YanivS2809',
     'Yaniv2809': 'YanivS2809',
     'YoavKatz': 'yoavi.k.',
     'elloro99': 'elloro88',
