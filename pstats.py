@@ -22,6 +22,7 @@ oldname_mapping = {
     'JimFridlin': 'connectedJokers',
     'suitedJokers21': 'connectedJokers',
     'arazi100': 'badluck9999',
+    'franki19852912': 'franki291285',
     'franki2912': 'franki291285',
     'O.M.G.R2022': 'OMGR888',
     'omrigropper': 'OMGR888',
