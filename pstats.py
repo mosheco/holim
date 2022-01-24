@@ -39,6 +39,7 @@ oldname_mapping = {
     'elloro99': 'elloro88',
     'Mordillo2020': 'Mordillo2022',
     'Z_707': 'tonnny707',
+    'toonnyy707': 'tonnny707',
     'shay830': 'shay4455'
 }
 
