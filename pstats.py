@@ -16,6 +16,7 @@ spreadsheet_id = '14sq8XzYnEt12S34WKplZUbT9GFa3jOxWlo1fmjyGeIQ'
 
 oldname_mapping = {
     'resber777': 'dovlakavod',
+    'JoeDubliner': 'dovlakavod',
     'kavodladov': 'dovlakavod',
     'vodaldovak': 'dovlakavod',
     'mishehu111': 'dovlakavod',
