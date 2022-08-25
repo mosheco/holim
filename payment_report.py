@@ -48,8 +48,7 @@ def main():
 
     title = 'סילוק חובות עד'
     # CREATE NEW SHEET
-    import time
-    request_body = {
+      request_body = {
             'requests': [{
                 'addSheet': {
                     'properties': {
